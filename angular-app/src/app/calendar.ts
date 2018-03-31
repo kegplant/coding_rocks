@@ -35,7 +35,7 @@ export class Calendar {
     // }
     generate(preferences,startDate:Date,duration): CalendarEvent[] {//randomness or strictly follow frequency? probably later
         var events:CalendarEvent[] = [];
-        console.log('date range: ',duration)
+        // console.log('date range: ',duration)
         for(let interest of preferences){
             // console.log('interest: ',interest);
             for(let i =0;i< duration;i+=interest.interval){

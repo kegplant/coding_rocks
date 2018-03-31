@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { CalendarService } from '../calendar.service';
+import { AsciiArtService } from '../ascii-art.service';
 
 @Component({
   selector: 'app-home',
@@ -22,11 +23,12 @@ export class HomeComponent implements OnInit {
     private _service: DataService,
     private _uservice: UserService,
     private router: Router,
-    private _eventservice: CalendarService
+    private _eventservice: CalendarService,
+    private _ascii: AsciiArtService,
   ) { }
 
   signUp(formdata) {
-    console.log(this.user);
+    // console.log(this.user);
     this._uservice.register(this.user);
     formdata.reset();
     this.user = new User();
@@ -38,16 +40,16 @@ export class HomeComponent implements OnInit {
   }
 
   login(info) {
-    console.log('in login');
-    console.log(info);
+    // console.log('in login');
+    // console.log(info);
     this._uservice.login(info, () => {
-      console.log('Logged in...');
+      // console.log('Logged in...');
       this.router.navigate(['/dashboard']);
     });
   }
 
     ngOnInit() {
-
+      this._ascii.printArt();
     }
 
 }

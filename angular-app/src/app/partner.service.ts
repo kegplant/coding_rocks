@@ -16,8 +16,8 @@ export class PartnerService {
   ) { }
 
   getPartner(email){
-    console.log("in find partner");
-    console.log(email);
+    // console.log("in find partner");
+    // console.log(email);
     this._http.post('/partner', email).subscribe(
       (data: any) => {this.partner.next(data)}
     )
@@ -25,7 +25,7 @@ export class PartnerService {
   }
 
   getPartnerInfo(data){
-    console.log(data.id);
+    // console.log(data.id);
     this._http.post('/partnerinfo', data).subscribe(
       (data: any) => {this.partner.next(data)}
     )

@@ -63,6 +63,7 @@ import {
   DataService
 } from '../data.service';
 import { YelpService } from '../yelp.service';
+import { AsciiArtService } from '../ascii-art.service';
 
 const colors: any = {
   red: {
@@ -139,21 +140,25 @@ export class DashboardComponent {
     private _CalendarService: CalendarService,
     private _UserService: UserService,
     private _route: Router,
-    private _yelp: YelpService, ) {
+    private _yelp: YelpService,
+    private _ascii: AsciiArtService,
+   ) {
     // config.placement = 'top-left';
     config.autoClose = false;
   }
 
 
   ngOnInit() {
+    
     if (!this._UserService.isLoggedIn()) {
       this._UserService.logout();
     } else {
       this.user = this._UserService.getSessionUser(); //users.subscribe(user=>{this.user=user;});
-      console.log('first name: ', this.user.firstName);
+      // console.log('first name: ', this.user.firstName);
       this.pendingRequests = this.user.requests.length;
-      console.log("pending requests are :"+this.pendingRequests);
+      // console.log("pending requests are :"+this.pendingRequests);
       this.initialize();
+      console.log("Thanks for using LoveFool!")
     }
   }
   //(date, events of the date) => set veDate=date
@@ -196,7 +201,7 @@ export class DashboardComponent {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    console.log('action: ',action, ' event: ',event);
+    // console.log('action: ',action, ' event: ',event);
     this.modalData = {
       event,
       action
@@ -233,6 +238,7 @@ export class DashboardComponent {
     // this.preferences=[  {event:'shop together',interval:7}, ] //should turn this into a type
     this.retrievePartnerEvents();//this should be done before retrieving self events due to the two events arrays are concatnated
     // this.retrieveSelfEvents();
+    // this._ascii.printArt();
   }
 
   onGenerate() {
@@ -240,16 +246,16 @@ export class DashboardComponent {
     var targetMonth = moment(targetDay.format('YYYY-MM'), "YYYY-MM");
     var duration = targetMonth.daysInMonth();
     var startDate = targetMonth.startOf('month').toDate(); //returns a moment object
-    console.log('startDate: ', startDate, '; duration: ', duration)
+    // console.log('startDate: ', startDate, '; duration: ', duration)
     // const startOfMonth = moment().startOf('month').format('YYYY-MM-DD hh:mm');
     // const endOfMonth   = moment().endOf('month').format('YYYY-MM-DD hh:mm');
-    console.log(`Generating a bunch of events per user request.`);
+    // console.log(`Generating a bunch of events per user request.`);
     //   console.log('events are: ',events);
     this._CalendarService.overwriteEvents(
       this.user._id, this.generateEvents(
         this.preferences, startDate, duration),
       (res) => { //this.retrieveEvents(this.user._id,1,1);
-        console.log('calling from component')
+        // console.log('calling from component')
       }
     ); //move to service?
   }
@@ -257,7 +263,8 @@ export class DashboardComponent {
     this._yelp.testQuery({
       term:'food: mexican',
       location: 'San Jose, CA'
-    },(business)=>{console.log(business)
+    },(business)=>{
+      // console.log(business)
       var date=new Date;
       this.newEvent=new Event('fate',date);
       this.newEvent['business']={
@@ -292,12 +299,13 @@ export class DashboardComponent {
         event.color={primary : 'blue',secondary : '#00CED1'};
         event.start = new Date(event.start); //very expensive???
       }
-      console.log('self event number: ',this.partnerEvents.length);
+      // console.log('self event number: ',this.partnerEvents.length);
       this.events=this.selfEvents.concat(this.partnerEvents);
       this.refresh.next();//debug: refreshes calendar. very important!
       //2.callback of events: prompt to generate events if none from now on ; 
       // if a week's elapsed, auto generate & alert for review or (prompt for generation and let user choose)
       // option to adjust preference / use your own preference for first timer / no partners yet
+      // this._ascii.printArt();
     });
   };
   generateEvents(preferences, startDate: Date, duration) { //move this to calendar service?
@@ -317,7 +325,7 @@ export class DashboardComponent {
         });
       }
     }
-    console.log('preferences: ', preferences);
+    // console.log('preferences: ', preferences);
     return preferences;
   }
   retrieveEvents(user_id, startDate: Date, duration) { // unused wrapper

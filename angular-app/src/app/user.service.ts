@@ -19,7 +19,7 @@ export class UserService {
   ) { }
 
   register(user) {
-    console.log('in service' + user);
+    // console.log('in service' + user);
     this._http.post('/createUser', user).subscribe(
       (data: any[]) => { this.users.next(data); },
       errorResponse => console.log(errorResponse)
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   login(info, callback) {
-    console.log('in service' + info);
+    // console.log('in service' + info);
     this._http.post('login', info).subscribe(
       (data: any[]) => {
         this.users.next(data);
@@ -53,7 +53,7 @@ export class UserService {
   isLoggedIn() {
     if (sessionStorage) {
       if ( sessionStorage.getItem('_id') ) {
-        console.log(sessionStorage.getItem('firstName') + ' is logged in already!!!' );
+        // console.log(sessionStorage.getItem('firstName') + ' is logged in already!!!' );
         return true;
       } else {
         return false;

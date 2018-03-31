@@ -9,7 +9,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { ReqconfirmComponent } from './reqconfirm/reqconfirm.component';
 import { InviteComponent } from './invite/invite.component';
 import { FrequencyComponent } from './frequency/frequency.component';
-import { NeweventComponent } from './newevent/newevent.component';
+// import { NeweventComponent } from './newevent/newevent.component';
 import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'requests', pathMatch: 'full', component: ReqconfirmComponent },
   { path: 'invite', pathMatch: 'full', component: InviteComponent },
   { path: 'freqset', pathMatch: 'full', component: FrequencyComponent },
-  { path: 'item', pathMatch: 'full', component: NeweventComponent },
+  // { path: 'item', pathMatch: 'full', component: NeweventComponent },
   { path: 'calendar', pathMatch: 'full', component: CalendarComponent },
 ];
 

@@ -17,13 +17,13 @@ export class ReqconfirmComponent implements OnInit {
   ngOnInit() {
     this.user = this._userService.getSessionUser();
     if (this.user){
-      console.log(this.user.firstName);
+      // console.log(this.user.firstName);
       this._partnerService.getRequestors({requests: this.user.requests});
     }
     
     this._userService.users.subscribe(
       (user) => { this.user = user;
-        console.log(this.user.requests);
+        // console.log(this.user.requests);
         this._partnerService.getRequestors({requests: this.user.requests});
       }
     );
@@ -48,7 +48,7 @@ export class ReqconfirmComponent implements OnInit {
   }
 
   removeRequest(idx){
-    console.log("hit remove")
+    // console.log("hit remove")
   }
 
 }

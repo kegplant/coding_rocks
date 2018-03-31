@@ -19,7 +19,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { ReqconfirmComponent } from './reqconfirm/reqconfirm.component';
 import { InviteComponent } from './invite/invite.component';
 import { FrequencyComponent } from './frequency/frequency.component';
-import { NeweventComponent } from './newevent/newevent.component';
+// import { NeweventComponent } from './newevent/newevent.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarService } from './calendar.service';
 import { CategoryService } from './category-service.service';
@@ -29,6 +29,7 @@ import { CalendarHeaderComponent } from './calendar-header/calendar-header.compo
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { PartnerService } from './partner.service';
 import { YelpService } from './yelp.service';
+import { AsciiArtService } from "./ascii-art.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { YelpService } from './yelp.service';
     ReqconfirmComponent,
     InviteComponent,
     FrequencyComponent,
-    NeweventComponent,
+    // NeweventComponent,
     CalendarComponent,
     CalendarHeaderComponent,
     DateTimePickerComponent,
@@ -57,7 +58,7 @@ import { YelpService } from './yelp.service';
     CalendarModule.forRoot(),
     ChartsModule
   ],
-  providers: [DataService, CategoryService,CalendarService, InterestService, UserService, PartnerService,YelpService],
+  providers: [DataService, CategoryService,CalendarService, InterestService, UserService, PartnerService,YelpService, AsciiArtService],
   bootstrap: [AppComponent]
 })
 

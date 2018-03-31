@@ -11,7 +11,7 @@ export class CategoryService {
   }
 
   getCategories() {
-    console.log("hit get");
+    // console.log("hit get");
     this._http.get('/categories').subscribe(
       (data: any[]) => { this.tasks.next(data)}
     )

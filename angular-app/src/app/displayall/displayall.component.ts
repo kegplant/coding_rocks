@@ -49,12 +49,12 @@ export class DisplayallComponent implements OnInit {
         this.categories.forEach(
           (element) => { this.category_boolean.push(false) }
         )
-        console.log(this.category_boolean);
+        // console.log(this.category_boolean);
       }
     );
 
     this.user = this.uservice.getSessionUser();      
-      console.log(this.user)
+      // console.log(this.user)
   }
 
   select(idx) {
@@ -72,7 +72,7 @@ export class DisplayallComponent implements OnInit {
   }
 
   filter() {
-    console.log("test");
+    // console.log("test");
     this._router.navigateByUrl('quiz/subcategories/1');
   }
 

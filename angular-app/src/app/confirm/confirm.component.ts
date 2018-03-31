@@ -28,9 +28,9 @@ export class ConfirmComponent implements OnInit {
       }
     );
     this.eservice.retrievePartnerEvents(this._user.getSessionUser()['_partner']);
-    console.log('*******Partner********');
-    console.log(this._user.getSessionUser()['_partner']);
-    console.log('*******Partner********');
+    // console.log('*******Partner********');
+    // console.log(this._user.getSessionUser()['_partner']);
+    // console.log('*******Partner********');
   }
 
   confirmLove(event) {
